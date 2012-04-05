@@ -52,7 +52,15 @@ public class Customer {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        phone=phone.replaceAll("[^\\d]", "");
+        if (phone.length()==11 || phone.length()==10){
+            this.phone = phone;
+        }else{
+            throw new IllegalArgumentException("Please enter a valid phone" +
+                    " number, including area code.");
+        }
+        
+        
     }
 
     public String getState() {

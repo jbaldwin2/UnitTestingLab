@@ -61,4 +61,10 @@ public class CustomerTest {
        instance.setAddress("123 Main st.");
         
     }
+    @Test(expected = IllegalArgumentException.class)
+    public void  phoneNumberHasTenOrElevenDigits() {
+       
+       instance.setAddress("1(123)-123-11235");
+        
+    }
 }
