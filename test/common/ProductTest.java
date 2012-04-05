@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
  * @author jbaldwin2
  */
 public class ProductTest {
+    private Product instance;
     
     public ProductTest() {
     }
@@ -26,15 +27,20 @@ public class ProductTest {
     
     @Before
     public void setUp() {
+        instance = new Product();
     }
     
     @After
     public void tearDown() {
+        instance = null;
     }
 
-    @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+     @Test(expected = IllegalArgumentException.class)
+    public void  unitCostShouldNotBeNegative() {
+       instance.setUnitCost(-12);
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void  unitProductNameNotBeNNull() {
+      instance.setProdName(null);
     }
 }

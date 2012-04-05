@@ -86,16 +86,26 @@ public class LineItem {
         return qty;
     }
 
-    public void setQty(double qty) {
-        this.qty = qty;
+    public void setQty(double qty) throws IllegalArgumentException {
+        if(qty>0){
+            this.qty = qty;
+        }else{
+            throw new IllegalArgumentException(
+                    "Quantity must be greater than zero, got: " + qty);
+        }
     }
 
     public double getUnitCost() {
         return unitCost;
     }
-
-    public void setUnitCost(double unitCost) {
-        this.unitCost = unitCost;
+//Allows for a 
+    public void setUnitCost(double unitCost) throws IllegalArgumentException {
+        if(unitCost>=0){
+            this.unitCost = unitCost;
+        }else{
+            throw new IllegalArgumentException(
+                    "Unit cost should no be negative, got: " + unitCost);
+        }
     }
     
     public String toString() {

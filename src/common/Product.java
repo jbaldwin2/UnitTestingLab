@@ -39,16 +39,28 @@ public class Product {
         return prodName;
     }
 
-    public void setProdName(String prodName) {
-        this.prodName = prodName;
+    public void setProdName(String prodName)throws IllegalArgumentException {
+        
+        if(prodName!=null){
+            this.prodName = prodName;
+        }else{
+             throw new IllegalArgumentException("Busted, null value");
+        }
+            
     }
 
     public double getUnitCost() {
         return unitCost;
     }
 
-    public void setUnitCost(double unitCost) {
-        this.unitCost = unitCost;
+    public void setUnitCost(double unitCost)throws IllegalArgumentException {
+        if(unitCost>=0){
+            this.unitCost = unitCost;
+        }else{
+            throw new IllegalArgumentException(
+                    "Unit cost should no be negative, got: " + unitCost);
+        }
+        
     }
 
     @Override

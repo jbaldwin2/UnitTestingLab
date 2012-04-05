@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  * @author jbaldwin2
  */
 public class CustomerTest {
-    
+    private Customer instance;
     public CustomerTest() {
     }
 
@@ -26,18 +26,20 @@ public class CustomerTest {
     
     @Before
     public void setUp() {
+        instance = new Customer();
     }
     
     @After
     public void tearDown() {
+        instance=null;
     }
     /**
      * This method tests if an address is null.
      */
     @Test(expected = IllegalArgumentException.class)
     public void  addressShouldNotBeNull() {
-       Customer c = new Customer();
-       c.setAddress(null);
+       
+       instance.setAddress(null);
        
        //assertNotNull(c.getAddress());
        
@@ -49,14 +51,14 @@ public class CustomerTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void  addressShouldNotBeEmpty() {
-       Customer c = new Customer();
-       c.setAddress("");
+       
+       instance.setAddress("");
         
     }
     @Test
     public void  addressShouldPass() {
-       Customer c = new Customer();
-       c.setAddress("123 Main st.");
+       
+       instance.setAddress("123 Main st.");
         
     }
 }

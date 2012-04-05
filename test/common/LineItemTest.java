@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  * @author jbaldwin2
  */
 public class LineItemTest {
-    
+    private LineItem instance;
     public LineItemTest() {
     }
 
@@ -26,15 +26,20 @@ public class LineItemTest {
     
     @Before
     public void setUp() {
+        instance= new LineItem();
     }
     
     @After
     public void tearDown() {
+        instance=null;
     }
 
-    @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+     @Test(expected = IllegalArgumentException.class)
+    public void  unitCostShouldNotBeNegative() {
+       instance.setUnitCost(-12);
+    }
+     @Test(expected = IllegalArgumentException.class)
+    public void  qtyShouldBeGreaterThanZero() {
+       instance.setQty(0);
     }
 }
